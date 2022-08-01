@@ -29,6 +29,9 @@ class ServiceHandler:
                         self.is_changed = True
                         time.sleep(3)
                         write_file("/tmp/{service_name}.lock".format(service_name=self.service_name), "0")
+                    else:
+                        time.sleep(3)
+                        write_file("/tmp/{service_name}.lock".format(service_name=self.service_name), "0")
 
     def start(self):
         service_handler_thread = threading.Thread(target=self.service_hander, daemon=True)
