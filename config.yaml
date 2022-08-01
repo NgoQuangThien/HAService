@@ -1,0 +1,12 @@
+service:
+  name: nginx
+  paths:
+    # Thu muc muon dong bo
+    - /etc/nginx/test/
+    # Tep muon dong bo
+#    - /etc/nginx/1.txt
+  exclude:
+    # Tep/Thu muc bo qua dong bo. Day la duong dan tuong doi so voi thu muc o tren
+    - exclude_1.txt
+    - exclude_2.txt
+  node_peer: server_1
