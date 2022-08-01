@@ -22,13 +22,13 @@ class ServiceHandler:
         while True:
             current_state = os.popen(self.cmd).read().strip()
             if current_state != self.old_state:
+                self.old_state = current_state
                 if current_state in self.required_state:
                     if read_file("/tmp/{service_name}.lock".format(service_name=self.service_name)) == "0":
                         write_file("/tmp/{service_name}.lock".format(service_name=self.service_name), "1")
                         self.is_changed = True
-                        self.old_state = current_state
-                else:
-                    write_file("/tmp/{service_name}.lock".format(service_name=self.service_name), "0")
+                        time.sleep(3)
+                        write_file("/tmp/{service_name}.lock".format(service_name=self.service_name), "0")
 
     def start(self):
         service_handler_thread = threading.Thread(target=self.service_hander, daemon=True)
