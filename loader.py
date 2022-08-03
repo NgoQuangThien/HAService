@@ -3,8 +3,8 @@ import logging
 import logging.handlers as handlers
 from ulti import read_yaml
 
-config_file = "config.yaml"
-logging_folder = "logs"
+config_file = "/tools/HAService/config.yaml"
+logging_folder = "/tools/HAService/logs"
 logging_file = "current.log"
 
 # Required global (config.yaml) configuration options
